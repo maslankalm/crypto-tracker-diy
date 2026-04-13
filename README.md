@@ -2,6 +2,8 @@
 
 A Raspberry Pi project that displays live cryptocurrency prices on a Waveshare 7.3" e-Paper (e-ink) display. Fetches BTC, ETH, SOL, and QUBIC prices from [api.maslanka.io](https://api.maslanka.io) and renders them with colored logos.
 
+<a href="tracker.jpeg"><img src="tracker.jpeg" alt="Tracker display in frame" width="400"></a>
+
 ## Hardware
 
 - Raspberry Pi (tested on Pi 4 / Pi Zero 2 W)
@@ -17,31 +19,7 @@ bash setup.sh
 venv/bin/python refresh_ink.py
 ```
 
-`setup.sh` is a one-time step that creates a virtual environment, installs Python dependencies, clones the [Waveshare e-Paper driver](https://github.com/waveshare/e-Paper), and links it so imports work out of the box.
-
-## Auto-Refresh with Cron
-
-To update the display every 10 minutes:
-
-```bash
-crontab -e
-```
-
-Add this line:
-
-```
-*/10 * * * * cd ~/crypto-tracker-diy && venv/bin/python refresh_ink.py >> cron.log 2>&1
-```
-
-## Remote Deploy
-
-If you develop on another machine and deploy to a Pi over SSH:
-
-```bash
-bash deploy.sh
-```
-
-This copies files to the Pi (SSH alias `rasp`), installs the crontab, and triggers an immediate refresh. Run `setup.sh` on the Pi first before the initial deploy. Edit `RASP` in `deploy.sh` to match your Pi's hostname.
+`setup.sh` creates a virtual environment, installs Python dependencies, clones the [Waveshare e-Paper driver](https://github.com/waveshare/e-Paper), links it so imports work out of the box, and installs a crontab entry to refresh the display every 10 minutes.
 
 ## API
 

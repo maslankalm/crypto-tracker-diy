@@ -26,4 +26,8 @@ fi
 echo "==> Linking waveshare_epd library..."
 ln -sf e-Paper/RaspberryPi_JetsonNano/python/lib/waveshare_epd waveshare_epd
 
-echo "==> Setup complete. Run with: venv/bin/python refresh_ink.py"
+echo "==> Installing crontab (every 10 min)..."
+CRON_CMD="cd $(pwd) && venv/bin/python refresh_ink.py >> $(pwd)/cron.log 2>&1"
+(crontab -l 2>/dev/null | grep -v 'refresh_ink.py'; echo "*/10 * * * * $CRON_CMD") | crontab -
+
+echo "==> Setup complete. Crontab will refresh the display every 10 minutes."
