@@ -6,7 +6,7 @@ A Raspberry Pi project that displays live cryptocurrency prices on a Waveshare 7
 
 ## Hardware
 
-- Raspberry Pi (tested on Pi 4 / Pi Zero 2 W)
+- Raspberry Pi (tested on Pi 4)
 - [Waveshare 7.3inch e-Paper HAT (E)](https://www.waveshare.com/7.3inch-e-paper-hat-e.htm) — 800x480, 6-color
 - SPI enabled (`sudo raspi-config` -> Interface Options -> SPI -> Yes)
 

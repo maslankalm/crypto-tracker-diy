@@ -6,7 +6,7 @@ cd "$SCRIPT_DIR"
 
 echo "==> Installing system dependencies..."
 sudo apt-get update
-sudo apt-get install -y python3-pip python3-venv git
+sudo apt-get install -y python3-pip python3-venv python3-dev build-essential git
 
 echo "==> Creating virtual environment..."
 python3 -m venv venv
